@@ -43,11 +43,14 @@ public class FrontEndDeveloper extends Employee {
     }
 
     @Override
-    public void generatePaySlip() {
-        System.out.println("Name: " + getName() + " " + getSurname());
-        System.out.println("Position: Front End Developer");
-        System.out.println("Experience: " + getExperience());
-        System.out.println("Salary: " + getBaseSalary());
+    public String[] generatePaySlip() {
+        String[] paySlip = new String[5];
+        paySlip[0] = getName();
+        paySlip[1] = getSurname();
+        paySlip[2] = "Front-end Developer";
+        paySlip[3] = String.valueOf(getExperience());
+        paySlip[4] = String.valueOf(getBaseSalary());
+        return paySlip;
     }
 }
 

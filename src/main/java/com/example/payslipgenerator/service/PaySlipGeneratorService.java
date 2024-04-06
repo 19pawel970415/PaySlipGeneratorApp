@@ -6,15 +6,21 @@ import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Data
 @AllArgsConstructor
 public class PaySlipGeneratorService {
 
-    public SessionFactory sessionFactory;
-
-    public void setDataInDb() {
+    public static void setDataInDb() {
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
@@ -52,45 +58,100 @@ public class PaySlipGeneratorService {
             session.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            sessionFactory.close();
         }
     }
 
-    public void generatePaySlipForEmployee(String login) {
+    public static Employee generatePaySlipForEmployee(String login) {
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            Employee employee = session.createQuery("FROM Employee WHERE login = :login", Employee.class)
-                    .setParameter("login", login)
-                    .getSingleResult();
+            // Sprawdzenie tabeli JavaDeveloper
+            Query<JavaDeveloper> javaQuery = session.createQuery("FROM JavaDeveloper WHERE login = :login", JavaDeveloper.class);
+            javaQuery.setParameter("login", login);
+            JavaDeveloper javaDeveloper = javaQuery.uniqueResult();
+            if (javaDeveloper != null) {
+                return javaDeveloper;
+            }
+
+            // Sprawdzenie tabeli CppDeveloper
+            Query<CppDeveloper> cppQuery = session.createQuery("FROM CppDeveloper WHERE login = :login", CppDeveloper.class);
+            cppQuery.setParameter("login", login);
+            CppDeveloper cppDeveloper = cppQuery.uniqueResult();
+            if (cppDeveloper != null) {
+                return cppDeveloper;
+            }
+
+            // Sprawdzenie tabeli CSharpDeveloper
+            Query<CSharpDeveloper> csharpQuery = session.createQuery("FROM CSharpDeveloper WHERE login = :login", CSharpDeveloper.class);
+            csharpQuery.setParameter("login", login);
+            CSharpDeveloper csharpDeveloper = csharpQuery.uniqueResult();
+            if (csharpDeveloper != null) {
+                return csharpDeveloper;
+            }
+
+            // Sprawdzenie tabeli DatabaseAnalyst
+            Query<DatabaseAnalyst> dbQuery = session.createQuery("FROM DatabaseAnalyst WHERE login = :login", DatabaseAnalyst.class);
+            dbQuery.setParameter("login", login);
+            DatabaseAnalyst dbAnalyst = dbQuery.uniqueResult();
+            if (dbAnalyst != null) {
+                return dbAnalyst;
+            }
+
+            // Sprawdzenie tabeli FrontEndDeveloper
+            Query<FrontEndDeveloper> frontEndQuery = session.createQuery("FROM FrontEndDeveloper WHERE login = :login", FrontEndDeveloper.class);
+            frontEndQuery.setParameter("login", login);
+            FrontEndDeveloper frontEndDeveloper = frontEndQuery.uniqueResult();
+            if (frontEndDeveloper != null) {
+                return frontEndDeveloper;
+            }
+
+            // Sprawdzenie tabeli PythonDeveloper
+            Query<PythonDeveloper> pythonQuery = session.createQuery("FROM PythonDeveloper WHERE login = :login", PythonDeveloper.class);
+            pythonQuery.setParameter("login", login);
+            PythonDeveloper pythonDeveloper = pythonQuery.uniqueResult();
+            if (pythonDeveloper != null) {
+                return pythonDeveloper;
+            }
 
             transaction.commit();
             session.close();
 
-            if (employee != null) {
-                employee.generatePaySlip();
-            } else {
-                System.out.println("Pracownik o podanym loginie nie został znaleziony.");
-            }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            sessionFactory.close();
         }
+
+        return null;
     }
 
-    public boolean checkSignIn(String username, String password) {
+    public static boolean checkSignIn(String username, String password) {
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            Query<Employee> query = session.createQuery("FROM Employee WHERE login = :login AND password = :password", Employee.class);
-            query.setParameter("login", username);
-            query.setParameter("password", password);
-            Employee user = query.uniqueResult();
-
+            Query<Employee> query = session.createQuery("FROM Employee");
+            List<Employee> resultList = query.getResultList();
+            Optional<Employee> user = resultList.stream().filter(e -> e.getLogin().equals(username) && e.getPassword().equals(password)).findFirst();
             transaction.commit();
 
-            return user != null;
+            if (user.isEmpty()) {
+                return false;
+            } else {
+                return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            sessionFactory.close();
         }
     }
 

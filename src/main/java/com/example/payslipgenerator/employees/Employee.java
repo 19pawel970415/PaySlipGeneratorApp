@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "employees")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "name")
@@ -34,6 +34,6 @@ public abstract class Employee {
 
     }
 
-    public abstract void generatePaySlip();
+    public abstract String[] generatePaySlip();
 }
 

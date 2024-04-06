@@ -52,5 +52,15 @@ public class PaySlipGeneratorController {
     public String getPythonDeveloperRegistrationPage() {
         return "register_python";
     }
+
+    @RequestMapping(value = "/notSignedIn", method = RequestMethod.GET)
+    public String getNotSignedIn() {
+        return "notSignedIn";
+    }
+
+    @RequestMapping(value = "/loggedIn", method = RequestMethod.GET)
+    public String getSignedIn() {
+        return "loggedIn";
+    }
 }
 
