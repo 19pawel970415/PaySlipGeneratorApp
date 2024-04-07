@@ -73,6 +73,10 @@
             color: #f00;
         }
 
+        .password-error {
+            border: 1px solid red !important;
+        }
+
     </style>
 </head>
 <body>
@@ -80,12 +84,12 @@
 <div class="container">
     <h1>Registration Page for C# Developer</h1>
     <div class="form-container">
-        <form action="register_java" method="post">
+        <form action="register_csharp" method="post" onsubmit="return validatePassword()">
             <input type="text" name="name" placeholder="Name" required><br>
             <input type="text" name="surname" placeholder="Surname" required><br>
             <input type="text" name="login" placeholder="Login" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
-            <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
+            <input type="password" name="password" id="password" placeholder="Password" required><br>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required onkeyup="validatePassword()"><br>
             <input type="text" name="toolname" placeholder="Tool Name" required><br>
             <select name="experience" required>
                 <option value="" disabled selected>Select Experience</option>
@@ -93,9 +97,25 @@
                 <option value="MID">Mid</option>
                 <option value="SENIOR">Senior</option>
             </select><br>
-            <input type="submit" value="Sign in">
+            <input type="submit" value="Sign up">
         </form>
     </div>
 </div>
+
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password");
+        var confirm_password = document.getElementById("confirm_password");
+
+        if (password.value !== confirm_password.value) {
+            confirm_password.classList.add("password-error");
+            return false;
+        } else {
+            confirm_password.classList.remove("password-error");
+            return true;
+        }
+    }
+</script>
+
 </body>
 </html>

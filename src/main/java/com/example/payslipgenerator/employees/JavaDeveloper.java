@@ -1,6 +1,10 @@
 package com.example.payslipgenerator.employees;
 
 import lombok.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,7 +15,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(name = "java_developers")
-public class JavaDeveloper extends Employee {
+public class JavaDeveloper extends Employee implements DataToDbHandler {
     private String toolName;
 
     @Enumerated(EnumType.STRING)
@@ -51,6 +55,26 @@ public class JavaDeveloper extends Employee {
         paySlip[3] = String.valueOf(getExperience());
         paySlip[4] = String.valueOf(getBaseSalary());
         return paySlip;
+    }
+
+    @Override
+    public void addDataToDb(String name, String surname, String login, String password, String toolName, String experience) {
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            JavaDeveloper javaDeveloper = new JavaDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
+            session.save(javaDeveloper);
+
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sessionFactory.close();
+        }
     }
 }
 

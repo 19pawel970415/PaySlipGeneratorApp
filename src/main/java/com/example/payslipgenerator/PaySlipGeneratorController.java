@@ -62,5 +62,10 @@ public class PaySlipGeneratorController {
     public String getSignedIn() {
         return "loggedIn";
     }
+
+    @RequestMapping(value = "/registration_success", method = RequestMethod.GET)
+    public String getRegistrationSuccess() {
+        return "registration_success";
+    }
 }
 
