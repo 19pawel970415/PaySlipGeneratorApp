@@ -67,5 +67,10 @@ public class PaySlipGeneratorController {
     public String getRegistrationSuccess() {
         return "registration_success";
     }
+
+    @RequestMapping(value = "/registration_failure", method = RequestMethod.GET)
+    public String getRegistrationFailure() {
+        return "registration_failure";
+    }
 }
 

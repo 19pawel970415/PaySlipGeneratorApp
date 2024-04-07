@@ -67,7 +67,7 @@
             background-color: #45a049;
         }
 
-        .home-icon {
+        .logout-icon {
             position: absolute;
             top: 10px;
             right: 20px;
@@ -76,13 +76,13 @@
             text-decoration: none;
         }
 
-        .home-icon:hover {
+        .logout-icon:hover {
             color: #f00;
         }
     </style>
 </head>
 <body>
-<a href="index" class="home-icon">&#127968;</a>
+<a href="index" class="logout-icon">&#128274;</a>
 <h1></h1>
 <%
     String username = request.getParameter("username");

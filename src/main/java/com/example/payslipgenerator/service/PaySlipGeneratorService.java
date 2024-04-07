@@ -154,4 +154,71 @@ public class PaySlipGeneratorService {
         }
     }
 
+    public static boolean checkLoginDuplicates(String login) {
+        SessionFactory sessionFactory = new Configuration()
+                .configure()
+                .buildSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            // Sprawdzenie tabeli JavaDeveloper
+            Query<JavaDeveloper> javaQuery = session.createQuery("FROM JavaDeveloper WHERE login = :login", JavaDeveloper.class);
+            javaQuery.setParameter("login", login);
+            JavaDeveloper javaDeveloper = javaQuery.uniqueResult();
+            if (javaDeveloper != null) {
+                return false;
+            }
+
+            // Sprawdzenie tabeli CppDeveloper
+            Query<CppDeveloper> cppQuery = session.createQuery("FROM CppDeveloper WHERE login = :login", CppDeveloper.class);
+            cppQuery.setParameter("login", login);
+            CppDeveloper cppDeveloper = cppQuery.uniqueResult();
+            if (cppDeveloper != null) {
+                return false;
+            }
+
+            // Sprawdzenie tabeli CSharpDeveloper
+            Query<CSharpDeveloper> csharpQuery = session.createQuery("FROM CSharpDeveloper WHERE login = :login", CSharpDeveloper.class);
+            csharpQuery.setParameter("login", login);
+            CSharpDeveloper csharpDeveloper = csharpQuery.uniqueResult();
+            if (csharpDeveloper != null) {
+                return false;
+            }
+
+            // Sprawdzenie tabeli DatabaseAnalyst
+            Query<DatabaseAnalyst> dbQuery = session.createQuery("FROM DatabaseAnalyst WHERE login = :login", DatabaseAnalyst.class);
+            dbQuery.setParameter("login", login);
+            DatabaseAnalyst dbAnalyst = dbQuery.uniqueResult();
+            if (dbAnalyst != null) {
+                return false;
+            }
+
+            // Sprawdzenie tabeli FrontEndDeveloper
+            Query<FrontEndDeveloper> frontEndQuery = session.createQuery("FROM FrontEndDeveloper WHERE login = :login", FrontEndDeveloper.class);
+            frontEndQuery.setParameter("login", login);
+            FrontEndDeveloper frontEndDeveloper = frontEndQuery.uniqueResult();
+            if (frontEndDeveloper != null) {
+                return false;
+            }
+
+            // Sprawdzenie tabeli PythonDeveloper
+            Query<PythonDeveloper> pythonQuery = session.createQuery("FROM PythonDeveloper WHERE login = :login", PythonDeveloper.class);
+            pythonQuery.setParameter("login", login);
+            PythonDeveloper pythonDeveloper = pythonQuery.uniqueResult();
+            if (pythonDeveloper != null) {
+                return false;
+            }
+
+            transaction.commit();
+            session.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sessionFactory.close();
+        }
+
+        return true;
+    }
+
 }
