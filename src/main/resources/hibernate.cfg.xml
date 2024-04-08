@@ -4,23 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- Pozostałe ustawienia konfiguracyjne Hibernate'a -->
-
-        <!-- Konfiguracja fabryki sesji -->
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernateexs?serverTimezone=Europe/Warsaw</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
-        <!-- Opcjonalne ustawienie - aktualizacja schematu bazy danych -->
-        <property name="hibernate.hbm2ddl.auto">update</property> <!-- create (deletes all and creates new) or update (it doesn't delete the "old tables") -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- Opcjonalne ustawienie - wyświetlanie SQL w konsoli -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <!-- Mapowanie klas encji -->
         <mapping class="com.example.payslipgenerator.employees.Employee"/>
         <mapping class="com.example.payslipgenerator.employees.CppDeveloper"/>
         <mapping class="com.example.payslipgenerator.employees.CSharpDeveloper"/>

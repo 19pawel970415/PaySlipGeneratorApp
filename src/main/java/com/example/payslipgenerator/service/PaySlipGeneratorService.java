@@ -69,7 +69,6 @@ public class PaySlipGeneratorService {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            // Sprawdzenie tabeli JavaDeveloper
             Query<JavaDeveloper> javaQuery = session.createQuery("FROM JavaDeveloper WHERE login = :login", JavaDeveloper.class);
             javaQuery.setParameter("login", login);
             JavaDeveloper javaDeveloper = javaQuery.uniqueResult();
@@ -77,7 +76,6 @@ public class PaySlipGeneratorService {
                 return javaDeveloper;
             }
 
-            // Sprawdzenie tabeli CppDeveloper
             Query<CppDeveloper> cppQuery = session.createQuery("FROM CppDeveloper WHERE login = :login", CppDeveloper.class);
             cppQuery.setParameter("login", login);
             CppDeveloper cppDeveloper = cppQuery.uniqueResult();
@@ -85,7 +83,6 @@ public class PaySlipGeneratorService {
                 return cppDeveloper;
             }
 
-            // Sprawdzenie tabeli CSharpDeveloper
             Query<CSharpDeveloper> csharpQuery = session.createQuery("FROM CSharpDeveloper WHERE login = :login", CSharpDeveloper.class);
             csharpQuery.setParameter("login", login);
             CSharpDeveloper csharpDeveloper = csharpQuery.uniqueResult();
@@ -93,7 +90,6 @@ public class PaySlipGeneratorService {
                 return csharpDeveloper;
             }
 
-            // Sprawdzenie tabeli DatabaseAnalyst
             Query<DatabaseAnalyst> dbQuery = session.createQuery("FROM DatabaseAnalyst WHERE login = :login", DatabaseAnalyst.class);
             dbQuery.setParameter("login", login);
             DatabaseAnalyst dbAnalyst = dbQuery.uniqueResult();
@@ -101,7 +97,6 @@ public class PaySlipGeneratorService {
                 return dbAnalyst;
             }
 
-            // Sprawdzenie tabeli FrontEndDeveloper
             Query<FrontEndDeveloper> frontEndQuery = session.createQuery("FROM FrontEndDeveloper WHERE login = :login", FrontEndDeveloper.class);
             frontEndQuery.setParameter("login", login);
             FrontEndDeveloper frontEndDeveloper = frontEndQuery.uniqueResult();
@@ -109,7 +104,6 @@ public class PaySlipGeneratorService {
                 return frontEndDeveloper;
             }
 
-            // Sprawdzenie tabeli PythonDeveloper
             Query<PythonDeveloper> pythonQuery = session.createQuery("FROM PythonDeveloper WHERE login = :login", PythonDeveloper.class);
             pythonQuery.setParameter("login", login);
             PythonDeveloper pythonDeveloper = pythonQuery.uniqueResult();
@@ -161,7 +155,6 @@ public class PaySlipGeneratorService {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            // Sprawdzenie tabeli JavaDeveloper
             Query<JavaDeveloper> javaQuery = session.createQuery("FROM JavaDeveloper WHERE login = :login", JavaDeveloper.class);
             javaQuery.setParameter("login", login);
             JavaDeveloper javaDeveloper = javaQuery.uniqueResult();
@@ -169,7 +162,6 @@ public class PaySlipGeneratorService {
                 return false;
             }
 
-            // Sprawdzenie tabeli CppDeveloper
             Query<CppDeveloper> cppQuery = session.createQuery("FROM CppDeveloper WHERE login = :login", CppDeveloper.class);
             cppQuery.setParameter("login", login);
             CppDeveloper cppDeveloper = cppQuery.uniqueResult();
@@ -177,7 +169,6 @@ public class PaySlipGeneratorService {
                 return false;
             }
 
-            // Sprawdzenie tabeli CSharpDeveloper
             Query<CSharpDeveloper> csharpQuery = session.createQuery("FROM CSharpDeveloper WHERE login = :login", CSharpDeveloper.class);
             csharpQuery.setParameter("login", login);
             CSharpDeveloper csharpDeveloper = csharpQuery.uniqueResult();
@@ -185,7 +176,6 @@ public class PaySlipGeneratorService {
                 return false;
             }
 
-            // Sprawdzenie tabeli DatabaseAnalyst
             Query<DatabaseAnalyst> dbQuery = session.createQuery("FROM DatabaseAnalyst WHERE login = :login", DatabaseAnalyst.class);
             dbQuery.setParameter("login", login);
             DatabaseAnalyst dbAnalyst = dbQuery.uniqueResult();
@@ -193,7 +183,6 @@ public class PaySlipGeneratorService {
                 return false;
             }
 
-            // Sprawdzenie tabeli FrontEndDeveloper
             Query<FrontEndDeveloper> frontEndQuery = session.createQuery("FROM FrontEndDeveloper WHERE login = :login", FrontEndDeveloper.class);
             frontEndQuery.setParameter("login", login);
             FrontEndDeveloper frontEndDeveloper = frontEndQuery.uniqueResult();
@@ -201,7 +190,6 @@ public class PaySlipGeneratorService {
                 return false;
             }
 
-            // Sprawdzenie tabeli PythonDeveloper
             Query<PythonDeveloper> pythonQuery = session.createQuery("FROM PythonDeveloper WHERE login = :login", PythonDeveloper.class);
             pythonQuery.setParameter("login", login);
             PythonDeveloper pythonDeveloper = pythonQuery.uniqueResult();

@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* tło strony */
+            background-color: #f0f0f0;
         }
 
         .container {
@@ -29,20 +29,20 @@
         .btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #4CAF50; /* kolor tła przycisków */
+            background-color: #4CAF50;
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
             margin: 0 10px;
             border-radius: 5px;
             transition: background-color 0.3s;
-            border: none; /* usuwa obramowanie przycisków */
-            cursor: pointer; /* zmienia kształt kursora na podstawie stanu przycisku */
-            outline: none; /* usuwa domyślny kontur po kliknięciu przycisku */
+            border: none;
+            cursor: pointer;
+            outline: none;
         }
 
         .btn:hover {
-            background-color: #45a049; /* zmiana koloru tła przycisków po najechaniu myszką */
+            background-color: #45a049;
         }
     </style>
 </head>
