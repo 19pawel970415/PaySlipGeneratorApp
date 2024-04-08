@@ -1,1 +1,11 @@
+Generowanie pasków wypłat dla różnych typów pracowników w firmie. Klasy reprezentują różne rodzaje pracowników, takie jak programiści Java, C#, C++, Front-end developerzy, analitycy baz danych itp. Każdy z tych pracowników ma swoje specyficzne cechy, takie jak narzędzia używane w pracy (np. IntelliJ, Visual Studio), doświadczenie (junior, mid, senior) oraz wynagrodzenie podstawowe.
+Projekt realizuje funkcje generowania wypłat dla tych pracowników na podstawie ich specyficznych danych, takich jak imię, nazwisko, login, hasło, narzędzie, doświadczenie itp. Metody w klasach pracowników takie jak generatePaySlip() generują raporty o wypłacie dla danego pracownika.
+Dodatkowo, istnieją metody do dodawania danych do bazy danych, projekt obejmuje zarządzanie danymi pracowników w bazie danych.
+W skrócie, celem tego projektu jest automatyzacja procesu generowania pasków wypłat dla różnych typów pracowników w firmie oraz zarządzanie danymi tych pracowników w bazie danych.
+Wymagania, które spełnia projekt są następujące:
+1.	automatyzacja procesu generowania wypłat: Klient oczekuje, że projekt umożliwi automatyczne generowanie raportów o wypłatach dla każdego pracownika na podstawie jego loginu. Dzięki temu firma będzie mogła szybko i efektywnie przetwarzać wypłaty dla swoich pracowników.
+2.	elastyczność i skalowalność: Klient oczekuje, że projekt będzie elastyczny i łatwo skalowalny, umożliwiając dodawanie nowych typów pracowników oraz dostosowywanie wypłat do ich specyficznych cech, takich jak narzędzia pracy i doświadczenie.
+3.	Zarządzanie danymi pracowników: Projekt powinien umożliwiać klientowi łatwe zarządzanie danymi pracowników, przede wszystkim dodawanie nowych pracowników do bazy danych.
+4.	bezpieczeństwo danych: Klient oczekuje, że projekt będzie zapewniał wysoki poziom bezpieczeństwa danych pracowników, w tym poufność, integralność i dostępność danych. Dostęp do danych pracowników powinien być kontrolowany za pomocą mechanizmów uwierzytelniania i autoryzacji.
+5.	łatwość obsługi: Projekt powinien być łatwy w obsłudze i intuicyjny dla użytkowników końcowych, umożliwiając szybkie generowanie raportów o wypłatach oraz zarządzanie danymi pracowników bez konieczności głębokiego zrozumienia technicznych szczegółów.
 
