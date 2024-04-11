@@ -1,6 +1,6 @@
-package com.example.payslipgenerator;
+package com.example.payslipgenerator.controller;
 
-import com.example.payslipgenerator.employees.*;
+import com.example.payslipgenerator.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

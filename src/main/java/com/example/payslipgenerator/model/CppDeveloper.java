@@ -1,5 +1,6 @@
-package com.example.payslipgenerator.employees;
+package com.example.payslipgenerator.model;
 
+import com.example.payslipgenerator.repository.DataToDbHandler;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Session;
@@ -15,15 +16,15 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "database_analysts")
-public class DatabaseAnalyst extends Employee implements DataToDbHandler {
+@Table(name = "cpp_developers")
+public class CppDeveloper extends Employee implements DataToDbHandler {
     private String toolName;
 
     @Enumerated(EnumType.STRING)
     private Experience experience;
-    private double baseSalary = 5000;
+    private double baseSalary = 4000;
 
-    public DatabaseAnalyst(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
+    public CppDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
         super(id, name, surname, login, password);
         this.toolName = toolName;
         this.experience = experience;
@@ -42,7 +43,7 @@ public class DatabaseAnalyst extends Employee implements DataToDbHandler {
         }
     }
 
-    public DatabaseAnalyst() {
+    public CppDeveloper() {
         super(null, null, null, null, null);
     }
 
@@ -51,7 +52,7 @@ public class DatabaseAnalyst extends Employee implements DataToDbHandler {
         String[] paySlip = new String[5];
         paySlip[0] = getName();
         paySlip[1] = getSurname();
-        paySlip[2] = "Database Analyst";
+        paySlip[2] = "C++ Developer";
         paySlip[3] = String.valueOf(getExperience());
         paySlip[4] = String.valueOf(getBaseSalary());
         return paySlip;
@@ -65,8 +66,8 @@ public class DatabaseAnalyst extends Employee implements DataToDbHandler {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            DatabaseAnalyst databaseAnalyst = new DatabaseAnalyst(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
-            session.save(databaseAnalyst);
+            CppDeveloper cppDeveloper = new CppDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
+            session.save(cppDeveloper);
 
             transaction.commit();
             session.close();

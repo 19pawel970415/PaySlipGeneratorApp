@@ -1,5 +1,6 @@
-package com.example.payslipgenerator.employees;
+package com.example.payslipgenerator.model;
 
+import com.example.payslipgenerator.repository.DataToDbHandler;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Session;
@@ -15,15 +16,15 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "csharp_developers")
-public class CSharpDeveloper extends Employee implements DataToDbHandler {
+@Table(name = "frontend_developers")
+public class FrontEndDeveloper extends Employee implements DataToDbHandler {
     private String toolName;
 
     @Enumerated(EnumType.STRING)
     private Experience experience;
-    private double baseSalary = 4500;
+    private double baseSalary = 3500;
 
-    public CSharpDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
+    public FrontEndDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
         super(id, name, surname, login, password);
         this.toolName = toolName;
         this.experience = experience;
@@ -42,7 +43,7 @@ public class CSharpDeveloper extends Employee implements DataToDbHandler {
         }
     }
 
-    public CSharpDeveloper() {
+    public FrontEndDeveloper() {
         super(null, null, null, null, null);
     }
 
@@ -51,7 +52,7 @@ public class CSharpDeveloper extends Employee implements DataToDbHandler {
         String[] paySlip = new String[5];
         paySlip[0] = getName();
         paySlip[1] = getSurname();
-        paySlip[2] = "C# Developer";
+        paySlip[2] = "Front-end Developer";
         paySlip[3] = String.valueOf(getExperience());
         paySlip[4] = String.valueOf(getBaseSalary());
         return paySlip;
@@ -65,8 +66,8 @@ public class CSharpDeveloper extends Employee implements DataToDbHandler {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            CSharpDeveloper cSharpDeveloper = new CSharpDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
-            session.save(cSharpDeveloper);
+            FrontEndDeveloper frontEndDeveloper = new FrontEndDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
+            session.save(frontEndDeveloper);
 
             transaction.commit();
             session.close();

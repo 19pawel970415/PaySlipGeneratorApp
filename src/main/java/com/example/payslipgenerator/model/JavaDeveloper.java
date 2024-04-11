@@ -1,7 +1,7 @@
-package com.example.payslipgenerator.employees;
+package com.example.payslipgenerator.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.example.payslipgenerator.repository.DataToDbHandler;
+import lombok.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,19 +15,19 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "frontend_developers")
-public class FrontEndDeveloper extends Employee implements DataToDbHandler {
+@Table(name = "java_developers")
+public class JavaDeveloper extends Employee implements DataToDbHandler {
     private String toolName;
 
     @Enumerated(EnumType.STRING)
     private Experience experience;
-    private double baseSalary = 3500;
+    private double baseSalary = 6000;
 
-    public FrontEndDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
+    public JavaDeveloper(Long id, String name, String surname, String login, String password, String toolname, Experience experience) {
         super(id, name, surname, login, password);
         this.toolName = toolName;
         this.experience = experience;
-        switch (experience) {
+        switch (this.experience) {
             case JUNIOR:
                 this.baseSalary = baseSalary;
                 break;
@@ -42,16 +42,17 @@ public class FrontEndDeveloper extends Employee implements DataToDbHandler {
         }
     }
 
-    public FrontEndDeveloper() {
+    public JavaDeveloper() {
         super(null, null, null, null, null);
     }
+
 
     @Override
     public String[] generatePaySlip() {
         String[] paySlip = new String[5];
         paySlip[0] = getName();
         paySlip[1] = getSurname();
-        paySlip[2] = "Front-end Developer";
+        paySlip[2] = "Java Developer";
         paySlip[3] = String.valueOf(getExperience());
         paySlip[4] = String.valueOf(getBaseSalary());
         return paySlip;
@@ -65,8 +66,8 @@ public class FrontEndDeveloper extends Employee implements DataToDbHandler {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            FrontEndDeveloper frontEndDeveloper = new FrontEndDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
-            session.save(frontEndDeveloper);
+            JavaDeveloper javaDeveloper = new JavaDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
+            session.save(javaDeveloper);
 
             transaction.commit();
             session.close();

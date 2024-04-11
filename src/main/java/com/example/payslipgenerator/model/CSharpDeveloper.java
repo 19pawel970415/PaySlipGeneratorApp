@@ -1,5 +1,6 @@
-package com.example.payslipgenerator.employees;
+package com.example.payslipgenerator.model;
 
+import com.example.payslipgenerator.repository.DataToDbHandler;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Session;
@@ -15,15 +16,15 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "cpp_developers")
-public class CppDeveloper extends Employee implements DataToDbHandler {
+@Table(name = "csharp_developers")
+public class CSharpDeveloper extends Employee implements DataToDbHandler {
     private String toolName;
 
     @Enumerated(EnumType.STRING)
     private Experience experience;
-    private double baseSalary = 4000;
+    private double baseSalary = 4500;
 
-    public CppDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
+    public CSharpDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
         super(id, name, surname, login, password);
         this.toolName = toolName;
         this.experience = experience;
@@ -42,7 +43,7 @@ public class CppDeveloper extends Employee implements DataToDbHandler {
         }
     }
 
-    public CppDeveloper() {
+    public CSharpDeveloper() {
         super(null, null, null, null, null);
     }
 
@@ -51,7 +52,7 @@ public class CppDeveloper extends Employee implements DataToDbHandler {
         String[] paySlip = new String[5];
         paySlip[0] = getName();
         paySlip[1] = getSurname();
-        paySlip[2] = "C++ Developer";
+        paySlip[2] = "C# Developer";
         paySlip[3] = String.valueOf(getExperience());
         paySlip[4] = String.valueOf(getBaseSalary());
         return paySlip;
@@ -65,8 +66,8 @@ public class CppDeveloper extends Employee implements DataToDbHandler {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            CppDeveloper cppDeveloper = new CppDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
-            session.save(cppDeveloper);
+            CSharpDeveloper cSharpDeveloper = new CSharpDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
+            session.save(cSharpDeveloper);
 
             transaction.commit();
             session.close();

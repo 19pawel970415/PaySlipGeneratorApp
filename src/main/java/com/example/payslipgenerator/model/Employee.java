@@ -1,4 +1,4 @@
-package com.example.payslipgenerator.employees;
+package com.example.payslipgenerator.model;
 
 import lombok.Data;
 

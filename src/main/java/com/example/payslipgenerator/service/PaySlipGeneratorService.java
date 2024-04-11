@@ -1,6 +1,6 @@
 package com.example.payslipgenerator.service;
 
-import com.example.payslipgenerator.employees.*;
+import com.example.payslipgenerator.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.Session;
@@ -8,12 +8,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Data
 @AllArgsConstructor
+@Service
 public class PaySlipGeneratorService {
 
     public static void setDataInDb() {

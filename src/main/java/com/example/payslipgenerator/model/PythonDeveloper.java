@@ -1,6 +1,8 @@
-package com.example.payslipgenerator.employees;
+package com.example.payslipgenerator.model;
 
-import lombok.*;
+import com.example.payslipgenerator.repository.DataToDbHandler;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,19 +16,19 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "java_developers")
-public class JavaDeveloper extends Employee implements DataToDbHandler {
+@Table(name = "python_developers")
+public class PythonDeveloper extends Employee implements DataToDbHandler {
     private String toolName;
 
     @Enumerated(EnumType.STRING)
     private Experience experience;
-    private double baseSalary = 6000;
+    private double baseSalary = 6500;
 
-    public JavaDeveloper(Long id, String name, String surname, String login, String password, String toolname, Experience experience) {
+    public PythonDeveloper(Long id, String name, String surname, String login, String password, String toolName, Experience experience) {
         super(id, name, surname, login, password);
         this.toolName = toolName;
         this.experience = experience;
-        switch (this.experience) {
+        switch (experience) {
             case JUNIOR:
                 this.baseSalary = baseSalary;
                 break;
@@ -41,17 +43,16 @@ public class JavaDeveloper extends Employee implements DataToDbHandler {
         }
     }
 
-    public JavaDeveloper() {
+    public PythonDeveloper() {
         super(null, null, null, null, null);
     }
-
 
     @Override
     public String[] generatePaySlip() {
         String[] paySlip = new String[5];
         paySlip[0] = getName();
         paySlip[1] = getSurname();
-        paySlip[2] = "Java Developer";
+        paySlip[2] = "Python Developer";
         paySlip[3] = String.valueOf(getExperience());
         paySlip[4] = String.valueOf(getBaseSalary());
         return paySlip;
@@ -65,8 +66,8 @@ public class JavaDeveloper extends Employee implements DataToDbHandler {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            JavaDeveloper javaDeveloper = new JavaDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
-            session.save(javaDeveloper);
+            PythonDeveloper pythonDeveloper = new PythonDeveloper(null, name, surname, login, password, toolName, Experience.valueOf(experience.toUpperCase()));
+            session.save(pythonDeveloper);
 
             transaction.commit();
             session.close();
@@ -76,5 +77,6 @@ public class JavaDeveloper extends Employee implements DataToDbHandler {
             sessionFactory.close();
         }
     }
+
 }
 
