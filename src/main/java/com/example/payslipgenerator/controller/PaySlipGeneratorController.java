@@ -14,62 +14,62 @@ public class PaySlipGeneratorController {
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String getSignInPage() {
-        return "signin";
+        return "login/signin";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String getSignUpPage() {
-        return "signup";
+        return "register/signup";
     }
 
     @RequestMapping(value = "/register_cpp", method = RequestMethod.GET)
     public String getCppDeveloperRegistrationPage() {
-        return "register_cpp";
+        return "register/register_cpp";
     }
 
     @RequestMapping(value = "/register_csharp", method = RequestMethod.GET)
     public String getCsharpDeveloperRegistrationPage() {
-        return "register_csharp";
+        return "register/register_csharp";
     }
 
     @RequestMapping(value = "/register_database", method = RequestMethod.GET)
     public String getDatabaseDeveloperRegistrationPage() {
-        return "register_database";
+        return "register/register_database";
     }
 
     @RequestMapping(value = "/register_frontend", method = RequestMethod.GET)
     public String getFrontendDeveloperRegistrationPage() {
-        return "register_frontend";
+        return "register/register_frontend";
     }
 
     @RequestMapping(value = "/register_java", method = RequestMethod.GET)
     public String getJavaDeveloperRegistrationPage() {
-        return "register_java";
+        return "register/register_java";
     }
 
     @RequestMapping(value = "/register_python", method = RequestMethod.GET)
     public String getPythonDeveloperRegistrationPage() {
-        return "register_python";
+        return "register/register_python";
     }
 
     @RequestMapping(value = "/notSignedIn", method = RequestMethod.GET)
     public String getNotSignedIn() {
-        return "notSignedIn";
+        return "login/notSignedIn";
     }
 
     @RequestMapping(value = "/loggedIn", method = RequestMethod.GET)
     public String getSignedIn() {
-        return "loggedIn";
+        return "login/loggedIn";
     }
 
     @RequestMapping(value = "/registration_success", method = RequestMethod.GET)
     public String getRegistrationSuccess() {
-        return "registration_success";
+        return "register/registration_success";
     }
 
     @RequestMapping(value = "/registration_failure", method = RequestMethod.GET)
     public String getRegistrationFailure() {
-        return "registration_failure";
+        return "register/registration_failure";
     }
 }
 
