@@ -52,7 +52,7 @@ public class RegisterController {
                                           @RequestParam String surname,
                                           @RequestParam String login,
                                           @RequestParam String password,
-                                          @RequestParam String toolname,
+                                          @RequestParam String toolName,
                                           @RequestParam String experience) {
 
         boolean isValid = checkLoginDuplicates(login);
@@ -60,7 +60,7 @@ public class RegisterController {
             return "redirect:/registration_failure";
         } else {
             PythonDeveloper pythonDeveloper = new PythonDeveloper();
-            pythonDeveloper.addDataToDb(name, surname, login, password, toolname, experience);
+            pythonDeveloper.addDataToDb(name, surname, login, password, toolName, experience);
 
             return "redirect:/registration_success";
         }
@@ -71,7 +71,7 @@ public class RegisterController {
                                         @RequestParam String surname,
                                         @RequestParam String login,
                                         @RequestParam String password,
-                                        @RequestParam String toolname,
+                                        @RequestParam String toolName,
                                         @RequestParam String experience) {
 
         boolean isValid = checkLoginDuplicates(login);
@@ -79,7 +79,7 @@ public class RegisterController {
             return "redirect:/registration_failure";
         } else {
             JavaDeveloper javaDeveloper = new JavaDeveloper();
-            javaDeveloper.addDataToDb(name, surname, login, password, toolname, experience);
+            javaDeveloper.addDataToDb(name, surname, login, password, toolName, experience);
 
             return "redirect:/registration_success";
         }
@@ -90,7 +90,7 @@ public class RegisterController {
                                             @RequestParam String surname,
                                             @RequestParam String login,
                                             @RequestParam String password,
-                                            @RequestParam String toolname,
+                                            @RequestParam String toolName,
                                             @RequestParam String experience) {
 
         boolean isValid = checkLoginDuplicates(login);
@@ -98,7 +98,7 @@ public class RegisterController {
             return "redirect:/registration_failure";
         } else {
             FrontEndDeveloper frontEndDeveloper = new FrontEndDeveloper();
-            frontEndDeveloper.addDataToDb(name, surname, login, password, toolname, experience);
+            frontEndDeveloper.addDataToDb(name, surname, login, password, toolName, experience);
 
             return "redirect:/registration_success";
         }
@@ -109,7 +109,7 @@ public class RegisterController {
                                             @RequestParam String surname,
                                             @RequestParam String login,
                                             @RequestParam String password,
-                                            @RequestParam String toolname,
+                                            @RequestParam String toolName,
                                             @RequestParam String experience) {
 
         boolean isValid = checkLoginDuplicates(login);
@@ -117,7 +117,7 @@ public class RegisterController {
             return "redirect:/registration_failure";
         } else {
             DatabaseAnalyst databaseAnalyst = new DatabaseAnalyst();
-            databaseAnalyst.addDataToDb(name, surname, login, password, toolname, experience);
+            databaseAnalyst.addDataToDb(name, surname, login, password, toolName, experience);
 
             return "redirect:/registration_success";
         }
@@ -128,7 +128,7 @@ public class RegisterController {
                                           @RequestParam String surname,
                                           @RequestParam String login,
                                           @RequestParam String password,
-                                          @RequestParam String toolname,
+                                          @RequestParam String toolName,
                                           @RequestParam String experience) {
 
         boolean isValid = checkLoginDuplicates(login);
@@ -136,7 +136,7 @@ public class RegisterController {
             return "redirect:/registration_failure";
         } else {
             CSharpDeveloper cSharpDeveloper = new CSharpDeveloper();
-            cSharpDeveloper.addDataToDb(name, surname, login, password, toolname, experience);
+            cSharpDeveloper.addDataToDb(name, surname, login, password, toolName, experience);
 
             return "redirect:/registration_success";
         }
@@ -147,7 +147,7 @@ public class RegisterController {
                                        @RequestParam String surname,
                                        @RequestParam String login,
                                        @RequestParam String password,
-                                       @RequestParam String toolname,
+                                       @RequestParam String toolName,
                                        @RequestParam String experience) {
 
         boolean isValid = checkLoginDuplicates(login);
@@ -155,7 +155,7 @@ public class RegisterController {
             return "redirect:/registration_failure";
         } else {
             CppDeveloper cppDeveloper = new CppDeveloper();
-            cppDeveloper.addDataToDb(name, surname, login, password, toolname, experience);
+            cppDeveloper.addDataToDb(name, surname, login, password, toolName, experience);
 
             return "redirect:/registration_success";
         }
