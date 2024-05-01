@@ -15,12 +15,12 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <mapping class="com.example.payslipgenerator.employees.Employee"/>
-        <mapping class="com.example.payslipgenerator.employees.CppDeveloper"/>
-        <mapping class="com.example.payslipgenerator.employees.CSharpDeveloper"/>
-        <mapping class="com.example.payslipgenerator.employees.JavaDeveloper"/>
-        <mapping class="com.example.payslipgenerator.employees.PythonDeveloper"/>
-        <mapping class="com.example.payslipgenerator.employees.FrontEndDeveloper"/>
-        <mapping class="com.example.payslipgenerator.employees.DatabaseAnalyst"/>
+        <mapping class="com.example.payslipgenerator.model.Employee"/>
+        <mapping class="com.example.payslipgenerator.model.CppDeveloper"/>
+        <mapping class="com.example.payslipgenerator.model.CSharpDeveloper"/>
+        <mapping class="com.example.payslipgenerator.model.JavaDeveloper"/>
+        <mapping class="com.example.payslipgenerator.model.PythonDeveloper"/>
+        <mapping class="com.example.payslipgenerator.model.FrontEndDeveloper"/>
+        <mapping class="com.example.payslipgenerator.model.DatabaseAnalyst"/>
     </session-factory>
 </hibernate-configuration>

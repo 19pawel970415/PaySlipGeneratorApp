@@ -1,3 +1,5 @@
+<jsp:useBean id="now" class="java.util.Date"/>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     <link rel="stylesheet" href="/resources/static/css/stylesSignup.css">
 </head>
 <body>
-<a href="index" class="home-icon">&#127968;</a>
+<%@ include file="../dynamic/home_icon.jspf" %>
 <div class="container">
     <h1>Welcome to Pay Slip Generator!</h1>
     <h1>Choose your position</h1>

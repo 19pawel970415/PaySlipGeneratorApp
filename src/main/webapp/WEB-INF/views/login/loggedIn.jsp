@@ -1,3 +1,5 @@
+<jsp:useBean id="now" class="java.util.Date"/>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="com.example.payslipgenerator.service.PaySlipGeneratorService" %>
 <%@ page import="com.example.payslipgenerator.model.Employee" %>
 <!DOCTYPE html>

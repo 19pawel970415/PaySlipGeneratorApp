@@ -1,3 +1,5 @@
+<jsp:useBean id="now" class="java.util.Date"/>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +9,9 @@
   <link rel="stylesheet" href="/resources/static/css/stylesSignupSpecificDev.css">
 </head>
 <body>
-<a href="index" class="home-icon">&#127968;</a>
+<%@ include file="../dynamic/home_icon.jspf" %>
 <div class="container">
-  <h1>Registration Page for Python Developer</h1>
+  <h1>Registration Page for Java Developer</h1>
   <div class="form-container">
     <form action="/register_java" method="post" onsubmit="return validatePassword()">
       <input type="text" name="name" placeholder="Name" required><br>
